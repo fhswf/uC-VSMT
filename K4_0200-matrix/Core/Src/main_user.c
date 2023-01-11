@@ -23,18 +23,20 @@
 /*********************************************
  * Set Outputs of driving key lines
  * according to bit pattern
+ * -> Bit x set in col means low on KEY_Tx
  *********************************************/
 static void set_column(uint8_t col)
 {
-	HAL_GPIO_WritePin(KEY_T0_GPIO_Port, KEY_T0_Pin, (col & 0x01)!=0);
-	HAL_GPIO_WritePin(KEY_T1_GPIO_Port, KEY_T1_Pin, (col & 0x02)!=0);
-	HAL_GPIO_WritePin(KEY_T2_GPIO_Port, KEY_T2_Pin, (col & 0x04)!=0);
-	HAL_GPIO_WritePin(KEY_T3_GPIO_Port, KEY_T3_Pin, (col & 0x08)!=0);
+	HAL_GPIO_WritePin(KEY_T0_GPIO_Port, KEY_T0_Pin, (col & 0x01)==0);
+	HAL_GPIO_WritePin(KEY_T1_GPIO_Port, KEY_T1_Pin, (col & 0x02)==0);
+	HAL_GPIO_WritePin(KEY_T2_GPIO_Port, KEY_T2_Pin, (col & 0x04)==0);
+	HAL_GPIO_WritePin(KEY_T3_GPIO_Port, KEY_T3_Pin, (col & 0x08)==0);
 }
 
 /*********************************************
  * Read in the four receiving lines and
  * return bit pattern
+ * If Key is pressed, the line reads a 0
  *********************************************/
 static uint8_t read_row()
 {
@@ -74,10 +76,10 @@ void main_user()
 			k = read_row();		// read result
 			switch(k)			// evaluate and set k
 			{
-				case 0b0001: k=1; break;
-				case 0b0010: k=2; break;
-				case 0b0100: k=3; break;
-				case 0b1000: k=4; break;
+				case 0b1110: k=1; break;		// Key pressed -> 0
+				case 0b1101: k=2; break;
+				case 0b1011: k=3; break;
+				case 0b0111: k=4; break;
 				default: k=0; break;
 			}
 			if (k!=0)			// only update idx if we have a key press
