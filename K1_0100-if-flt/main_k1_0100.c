@@ -1,15 +1,16 @@
-/*
+/*  _______ _______        _______ ________ _______             ______        ______
+ * |    ___|   |   |______|     __|  |  |  |    ___|    .--.--.|      |______|   __ \.----.-----.-----.
+ * |    ___|       |______|__     |  |  |  |    ___|    |  |  ||   ---|______|    __/|   _|  _  |  _  |
+ * |___|   |___|___|      |_______|________|___|        |_____||______|      |___|   |__| |_____|___  |
+ *                                                                                              |_____|
  * main_k1_0100.c
  *
- *  Code-Beispiele zum Lehrbrief
- *  "Mikrocontroller-Programmierung"
+ *  Code-Beispiele zum Lehrbrief "Mikrocontroller-Programmierung"
  *
  *  (c) Prof. Tobias Ellermeyer
  *      Fachhochschule Suedwestfalen
  *
- *  Stand: WS 2022/23
- *
- *
+ *  Letztes Update: SoSe 2023
  */
 
 
